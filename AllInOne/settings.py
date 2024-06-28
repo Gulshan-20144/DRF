@@ -70,8 +70,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'AllInOne.urls'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 TEMPLATES = [
     {
@@ -248,7 +246,7 @@ LOGGING = {
     'version': 1,
     'handlers': {
         'file': {
-            # 'level': 'DEBUG',
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': 'LogInfomation',  # Adjust the path as needed
             'formatter': 'verbose',
