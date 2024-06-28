@@ -17,7 +17,8 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.exceptions import PermissionDenied
 from user.throttlings import IPBasedRateThrottle,block_user_attempts
-
+import logging
+logger=logging.getLogger("LogInfomation")
 # Create your views here.
 class RagistrationsApiView(APIView):
     authentication_classes = ()
@@ -26,6 +27,7 @@ class RagistrationsApiView(APIView):
     @swagger_auto_schema(request_body=RagisterSerializers)
     def post(self,request):
         try:
+            logger.info(f"the request from the user {request.data}")
             datas=request.data
             result=register_user_task.delay(datas)
             task_result = result.get()
